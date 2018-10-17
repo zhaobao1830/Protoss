@@ -16,6 +16,12 @@ Page({
   },
 
   _loadData:function(){
-    $data = home.getBannerData(id);
+    $data = home.getBannerData(id, (res)=>{
+      console.log($data);
+    });
+  },
+
+  callback:function(res){
+    console.log(res)
   }
 })
