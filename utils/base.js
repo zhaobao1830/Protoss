@@ -1,4 +1,4 @@
-import {Config} from "./config";
+import {Config} from "config";
 
 class Base {
   constructor() {
@@ -7,7 +7,7 @@ class Base {
 
 
   request(params) {
-    var url = this.baseRequestUrl + params.url;
+    let url = this.baseRequestUrl + params.url;
 
     if (!params.type){
       params.type = 'GET'
@@ -25,11 +25,13 @@ class Base {
         //   params.sCallBack(res);
         // }
         // 这俩种写法是一样的  推荐用下面的，微信的demo中就这样写的
-        params.sCallBack&&params.sCallBack(res);
+        params.sCallBack && params.sCallBack(res.data);
       },
       fail: function (err) {
-
+        console.log(err)
       }
     })
   }
 }
+
+export { Base };

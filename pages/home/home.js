@@ -16,8 +16,9 @@ Page({
   },
 
   _loadData:function(){
-    $data = home.getBannerData(id, (res)=>{
-      console.log($data);
+    let id = 1
+    home.getBannerData(id, (res)=>{
+      console.log(res);
     });
   },
 
