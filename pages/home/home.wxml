@@ -1,4 +1,38 @@
-<view>
-  <swiper></swiper>
-  <view></view>
+<!--引入template文件-->
+<import src="../tpls/products/products-tpl.wxml" />
+
+<!--使用data把数据传递到template里面-->
+<template is="products" data="{{products:productsArr}}"></template>
+
+<view class="container">
+  <swiper indicator-dots="true" autoplay="true" class="swiper">
+    <block wx:for="{{bannerArr}}">
+      <swiper-item class="banner-item">
+        <image src="{{item.img.url}}" class="item-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="home-main">
+    <view class="home-main-theme">
+      <view class="home-main-header">精选主题</view>
+      <view class="theme-box">
+        <block wx:for="{{themeArr}}">
+          <view wx:if="{{index==2}}" class="theme-item big">
+            <image src="{{item.topic_img.url}}"></image>
+          </view>
+          <view wx:esle class="theme-item">
+            <image src="{{item.topic_img.url}}"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="home-main-products">
+      <view class="home-main-header">最近新品</view>
+
+        <!--使用data把数据传递到template里面-->
+      <template is="products" data="{{products:productsArr}}"></template>
+    </view>
+  </view>
 </view>

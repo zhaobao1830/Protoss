@@ -18,11 +18,22 @@ Page({
   _loadData:function(){
     let id = 1
     home.getBannerData(id, (res)=>{
-      console.log(res);
+      // 数据绑定
+      this.setData({
+        'bannerArr': res
+      })
     });
-  },
 
-  callback:function(res){
-    console.log(res)
+    home.getThemeData((res) => {
+      this.setData({
+        'themeArr': res
+      });
+    });
+
+    home.getProductsData((data) => {
+      this.setData({
+        productsArr: data
+      });
+    });
   }
 })

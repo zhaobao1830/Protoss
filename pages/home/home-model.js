@@ -15,13 +15,27 @@ class Home extends Base{
     }
 
     this.request(params);
-    // wx.request({
-    //   url: 'http://z.cn/api/v1/banner/' + id,
-    //   method: 'GET',
-    //   success:function(res){
-    //     callback(res)
-    //   }
-    // })
+  }
+
+  /*首页主题*/
+  getThemeData (callback) {
+    let params = {
+      url: 'theme?ids=1,2,3',
+      sCallBack: function (data) {
+        callback && callback(data);
+      }
+    };
+    this.request(params);
+  }
+
+  getProductsData(callback) {
+    var param = {
+      url: 'product/recent',
+      sCallback: function (data) {
+        callback && callback(data);
+      }
+    };
+    this.request(param);
   }
 }
 
