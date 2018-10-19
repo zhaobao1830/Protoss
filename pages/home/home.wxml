@@ -6,8 +6,8 @@
 
 <view class="container">
   <swiper indicator-dots="true" autoplay="true" class="swiper">
-    <block wx:for="{{bannerArr}}">
-      <swiper-item class="banner-item">
+    <block wx:for="{{bannerArr}}" wx:key="index">
+      <swiper-item class="banner-item" bindtap="onProductsItemTap" data-id="{{item.key_word}}">
         <image src="{{item.img.url}}" class="item-image"></image>
       </swiper-item>
     </block>
@@ -17,11 +17,11 @@
     <view class="home-main-theme">
       <view class="home-main-header">精选主题</view>
       <view class="theme-box">
-        <block wx:for="{{themeArr}}">
-          <view wx:if="{{index==2}}" class="theme-item big">
+        <block wx:for="{{themeArr}}" wx:key="index">
+          <view wx:if="{{index==2}}" class="theme-item big" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
             <image src="{{item.topic_img.url}}"></image>
           </view>
-          <view wx:esle class="theme-item">
+          <view wx:esle class="theme-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
             <image src="{{item.topic_img.url}}"></image>
           </view>
         </block>
