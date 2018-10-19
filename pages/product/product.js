@@ -1,0 +1,44 @@
+// pages/product/product.js
+import {Product} from 'product-model.js'
+let product = new Product();
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    id: null,
+    countsArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    productCount: 1
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let id = options.id;
+    this.data.id = id;
+    this._loadData();
+  },
+
+  _loadData: function () {
+    product.getDetailInfo(this.data.id, (data)=>{
+      this.setData({
+        product: data
+      });
+    })
+  },
+
+  bindPickerChange: function (event) {
+    let index = event.detail.value;
+    let selectedCount = this.data.countsArray[index]
+    this.setData({
+      productCount: selectedCount
+    })
+  },
+
+  onTabsItemTap: function (event) {
+    
+  }
+})

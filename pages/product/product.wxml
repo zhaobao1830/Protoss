@@ -1,0 +1,48 @@
+<!--pages/product/product.wxml 商品详情页-->
+
+<view class="container detail-container">
+  <view class="detail-header-box">
+    <view class="fixed-btns-box">
+      <view class="fiexd-cart">
+        <image src="../../imgs/icon/cart@top.png"></image>
+      </view>
+    </view>
+
+    <view class="detail-topic-img">
+      <image src="{{product.main_img_url}}" mode="aspectFit">
+      </image>
+    </view>
+
+    <view class="cart-box">
+      <view class="product-counts">
+        <picker class="{{product.stock==0?'disabled':''}}" range="{{countsArray}}" bindchange="bindPickerChange" value="1">
+          <!--flex-->
+          <view>
+            <text class="counts-tips">数量</text>
+            <text class="counts-data">{{productCount}}</text>
+            <image class="counts-icon" src="../../imgs/icon/arrow@down.png"></image>
+          </view>
+        </picker>
+      </view>
+      <view class="middle-border"></view>
+      <view class="add-cart-btn"></view>
+    </view>
+
+    <view class="basic-info-box">
+      <view class="stock" wx:if="{{product.stock>0}}">有货</view>
+      <view class="stock no" wx:else>缺货</view>
+      <view class="name">{{product.name}}</view>
+      <view class="price">￥{{product.price}}</view>
+    </view>
+  </view>
+
+  <view class="detail-bottom-box">
+    <view class="tabs-box">
+      <block wx:for="{{['商品详情','产品参数','售后保障']}}">
+        <view class="tabs-item {{currentTabsIndex==index?'selected':''}}" data-index="index" bindtap="onTabsItemTap">
+
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
