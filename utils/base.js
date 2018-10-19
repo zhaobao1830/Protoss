@@ -21,16 +21,17 @@ class Base {
         'token': wx.getStorageSync('token')
       },
       success: function (res) {
-        // if(params.sCallBack){
-        //   params.sCallBack(res);
-        // }
-        // 这俩种写法是一样的  推荐用下面的，微信的demo中就这样写的
         params.sCallBack && params.sCallBack(res.data);
       },
       fail: function (err) {
         console.log(err)
       }
     })
+  }
+
+  /*获得元素上的绑定的值*/
+  getDataSet(event, key) {
+    return event.currentTarget.dataset[key]
   }
 }
 
