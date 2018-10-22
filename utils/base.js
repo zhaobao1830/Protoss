@@ -7,7 +7,7 @@ class Base {
 
 
   request(params) {
-    let url = this.baseRequestUrl + params.url;
+    var url = this.baseRequestUrl + params.url;
 
     if (!params.type){
       params.type = 'GET'

@@ -7,7 +7,7 @@ class Home extends Base{
   }
   
   getBannerData(id, callBack){
-    let params = {
+    var params = {
       url: 'banner/' + id,
       sCallBack: function (res) {
         callBack && callBack(res.items);
@@ -19,7 +19,7 @@ class Home extends Base{
 
   /*首页主题*/
   getThemeData (callback) {
-    let params = {
+    var params = {
       url: 'theme?ids=1,2,3',
       sCallBack: function (data) {
         callback && callback(data);

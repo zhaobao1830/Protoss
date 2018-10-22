@@ -16,8 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id;
-    let name = options.name;
+    var id = options.id;
+    var name = options.name;
     this.data.id = id;
     this.data.name = name;
     this._loadData();

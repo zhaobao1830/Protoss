@@ -1,6 +1,6 @@
 // pages/product/product.js
 import {Product} from 'product-model.js'
-let product = new Product();
+var product = new Product();
 
 Page({
 
@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id;
+    var id = options.id;
     this.data.id = id;
     this._loadData();
   },
@@ -31,8 +31,8 @@ Page({
   },
 
   bindPickerChange: function (event) {
-    let index = event.detail.value;
-    let selectedCount = this.data.countsArray[index]
+    var index = event.detail.value;
+    var selectedCount = this.data.countsArray[index]
     this.setData({
       productCount: selectedCount
     })
