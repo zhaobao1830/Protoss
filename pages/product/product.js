@@ -39,6 +39,9 @@ Page({
   },
 
   onTabsItemTap: function (event) {
-    
+    var index = event.detail.value;
+    this.setData({
+      currentTabsIndex: index
+    })
   }
 })
