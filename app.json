@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/product/product",
-    "pages/theme/theme"
+    "pages/theme/theme",
+    "pages/category/category"
   ],
   "window": {
     "navigationBarBackgroundColor": "#AB956D",
