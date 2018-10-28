@@ -8,7 +8,7 @@ class Product extends Base{
   getDetailInfo(id, callback) {
     var param = {
       url: 'product/' + id,
-      sCallback: function (data) {
+      sCallBack: function (data) {
         callback && callback(data);
       }
     };

@@ -30,9 +30,9 @@ Page({
       });
     });
 
-    home.getProductsData((data) => {
+    home.getProductsData((res) => {
       this.setData({
-        productsArr: data
+        productsArr: res
       });
     });
   },

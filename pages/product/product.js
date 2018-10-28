@@ -10,6 +10,7 @@ Page({
   data: {
     id: null,
     countsArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    tabs: [['商品详情','产品参数','售后保障']],
     productCount: 1
   },
 

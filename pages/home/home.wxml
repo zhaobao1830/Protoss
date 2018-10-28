@@ -1,9 +1,6 @@
 <!--引入template文件-->
 <import src="../tpls/products/products-tpl.wxml" />
 
-<!--使用data把数据传递到template里面-->
-<template is="products" data="{{products:productsArr}}"></template>
-
 <view class="container">
   <swiper indicator-dots="true" autoplay="true" class="swiper">
     <block wx:for="{{bannerArr}}" wx:key="index">
@@ -21,7 +18,7 @@
           <view wx:if="{{index==2}}" class="theme-item big" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
             <image src="{{item.topic_img.url}}"></image>
           </view>
-          <view wx:esle class="theme-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
+          <view wx:else class="theme-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="onThemesItemTap">
             <image src="{{item.topic_img.url}}"></image>
           </view>
         </block>

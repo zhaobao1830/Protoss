@@ -10,7 +10,7 @@ class Theme extends Base{
   getProductsData(id, callback) {
     var param = {
       url: 'theme/' + id,
-      sCallback: function (data) {
+      sCallBack: function (data) {
         callback && callback(data);
       }
     };

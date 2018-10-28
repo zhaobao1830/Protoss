@@ -38,7 +38,7 @@
 
   <view class="detail-bottom-box">
     <view class="tabs-box">
-      <block wx:for="{{['商品详情','产品参数','售后保障']}}">
+      <block wx:for="{{tabs}}" wx:key="index">
         <view class="tabs-item {{currentTabsIndex==index?'selected':''}}" data-index="index" bindtap="onTabsItemTap">
         </view>
       </block>
@@ -47,14 +47,14 @@
     <view class="product-detail-box">
 
       <view class="product-detail-imgs" hidden="{{currentTabsIndex!=0}}">
-        <block wx:for="{{product.imgs}}">
+        <block wx:for="{{product.imgs}}" wx:key="index">
           <image src="{{item.img_url.url}}" mode="aspectFill"></image>
         </block>
       </view>
 
       <view class="product-detail-properties" hidden="{{currentTabsIndex!=1}}">
 
-        <block wx:for="{{product.properties}}">
+        <block wx:for="{{product.properties}}" wx:key="index">
 
           <view class="properties-item">
             <view class="properties-name">{{item.name}}</view>

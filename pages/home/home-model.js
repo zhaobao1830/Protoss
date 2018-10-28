@@ -29,13 +29,13 @@ class Home extends Base{
   }
 
   getProductsData(callback) {
-    var param = {
+    var params = {
       url: 'product/recent',
-      sCallback: function (data) {
+      sCallBack: function (data) {
         callback && callback(data);
       }
     };
-    this.request(param);
+    this.request(params);
   }
 }
 
