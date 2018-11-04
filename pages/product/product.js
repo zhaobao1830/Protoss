@@ -72,6 +72,7 @@ Page({
     cart.add(tempObj, this.data.productCount);
   },
 
+  // 因为是跳转到tab栏下面的页面，必须使用switchTab
   onCartTap:function(event){
     wx.switchTab({
       url: '/pages/cart/cart'
