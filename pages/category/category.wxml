@@ -1,4 +1,4 @@
-<!--pages/category/category.wxml-->
+<!--pages/category/category.wxml  分类页面-->
 <import src="../tpls/category/category-tpl.wxml"/>
 
 <view class="container category-container">
