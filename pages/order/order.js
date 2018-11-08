@@ -232,7 +232,9 @@ Page({
     var that = this;
 
     order.execPay(id, (statusCode) => {
-
+      // statusCode 0 咱们的服务器失败 1 是支付失败 2是支付成功
+      // 1 支付成功的时候，把商品从购物车删除
+      // 2 支付失败的时候，也要删除，因为这时候订单已经生成
       if (statusCode != 0) {
 
         //将已经下单的商品从购物车删除
