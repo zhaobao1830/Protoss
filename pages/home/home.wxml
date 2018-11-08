@@ -1,3 +1,4 @@
+<!--主页页面-->
 <!--引入template文件-->
 <import src="../tpls/products/products-tpl.wxml" />
 
