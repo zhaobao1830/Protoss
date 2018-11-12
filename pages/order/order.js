@@ -221,12 +221,16 @@ Page({
     });
   },
 
+  /* 再次支付*/
+  _oneMoresTimePay:function(){
+    this._execPay(this.data.id);
+  },
 
   /*
-*开始支付
-* params:
-* id - {int}订单id
-*/
+  *开始支付
+  * params:
+  * id - {int}订单id
+  */
   _execPay: function (id) {
 
     var that = this;
