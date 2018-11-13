@@ -31,7 +31,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var newOrderFlag = order.hasNewOrder();
+    if(newOrderFlag) {
+      this.refresh();
+    }
+  },
 
+  refresh: function () {
+    var that = this;
+    this.data.orderArr = [];  //订单初始化
+    this._getOrders(() => {
+      that.data.isLoadedAll = false;  //是否加载完全
+      that.data.pageIndex = 1;
+      order.execSetStorageSync(false);  //更新标志位
+    });
   },
 
   _loadData: function () {
@@ -52,7 +65,7 @@ Page({
 
   // 获取订单列表
   _getOrders: function (callback) {
-    order.getOrders(this.data.index, (res) => {
+    order.getOrders(this.data.pageIndex, (res) => {
       var data = res.data;
 
       if (data.length > 0) {
@@ -75,5 +88,44 @@ Page({
       this._getOrders();
       //scroll-view
     }
+  },
+
+  /*显示订单的具体信息*/
+  showOrderDetailInfo: function (event) {
+
+    var id = order.getDataSet(event, 'id');
+    wx.navigateTo({
+      url: '../order/order?from=order&id=' + id
+    });
+  },
+
+  rePay: function (event) {
+    var id = order.getDataSet(event, 'id'),
+      index = order.getDataSet(event, 'index');
+    this._execPay(id, index);
+  },
+
+  _execPay:function (id, index) {
+    var that = this;
+    order.execPay(id, (statusCode) => {
+      if (statusCode > 0) {
+        var flag = statusCode == 2;
+
+        // 更新订单显示状态
+        if (flag) {
+          that.data.orderArr[index].status == 2;
+          that.setData({
+            orderArr: that.data.orderArr
+          });
+        }
+
+        //跳转到 成功页面
+        wx.navigateTo({
+          url: '../pay-result/pay-result?id=' + id + '&flag=' + flag + '&from=my'
+        });
+      } else {
+        that.showTips('支付失败', '商品已下架或库存不足');
+      }
+    })
   }
 })
