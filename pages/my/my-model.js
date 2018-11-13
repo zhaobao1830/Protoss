@@ -12,6 +12,7 @@ class My extends Base{
     wx.login({
       success: function () {
 
+        // 需要用户授权
         wx.getUserInfo({
 
           success: function (res) {

@@ -21,7 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._loadData();
+    this._getAddressInfo();
   },
 
   /**
@@ -29,5 +30,19 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  _loadData: function () {
+    my.getUserInfo((data) => {
+      this.setData({
+        userInfo: data
+      })
+    })
+  },
+
+  _getAddressInfo:function () {
+    address.getAddress((addressInfo) => {
+      this._bindAddressInfo(addressInfo);
+    });
   }
 })
