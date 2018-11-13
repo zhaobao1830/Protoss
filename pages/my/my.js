@@ -14,7 +14,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pageIndex: 1,
+    orderArr: [],
+    isLoadedAll: false
   },
 
   /**
@@ -38,11 +40,40 @@ Page({
         userInfo: data
       })
     })
+
+    this._getOrders();
   },
 
   _getAddressInfo:function () {
     address.getAddress((addressInfo) => {
       this._bindAddressInfo(addressInfo);
     });
+  },
+
+  // 获取订单列表
+  _getOrders: function (callback) {
+    order.getOrders(this.data.index, (res) => {
+      var data = res.data;
+
+      if (data.length > 0) {
+        // 合并俩个数组
+        this.data.orderArr.push.apply(this.data.orderArr, data);
+        this.setData({
+          orderArr: this.data.orderArr
+        });
+      }
+      else {
+        this.data.isLoadedAll = true;
+      }
+      callback && callback();
+    })
+  },
+
+  onReachBottom: function () {
+    if (!this.data.isLoadedAll) {
+      this.data.pageIndex++;
+      this._getOrders();
+      //scroll-view
+    }
   }
 })
