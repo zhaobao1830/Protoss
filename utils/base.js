@@ -25,15 +25,10 @@ class Base {
         'token': wx.getStorageSync('token')
       },
       success: function (res) {
-        // if(params.sCallBack){
-        //   params.sCallBack(res);
-        // }
-
         var code = res.statusCode.toString();
         var startChar = code.charAt(0);
-
         if (startChar == '2') {
-          params.sCallback && params.sCallback(res.data);
+          params.sCallBack && params.sCallBack(res.data);
         }
         else {
           //AOP
