@@ -132,15 +132,6 @@ Page({
     });
   },
 
-
-
-
-
-
-
-
-
-
   /*下单和付款*/
   pay: function () {
     if (!this.data.addressInfo) {
