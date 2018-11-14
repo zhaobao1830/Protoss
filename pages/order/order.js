@@ -79,29 +79,6 @@ Page({
     }
   },
 
-  editAddress: function (event) {
-    var that = this;
-    wx.chooseAddress({
-      success: function (res) {
-        console.log(res);
-        var addressInfo = {
-          name: res.userName,
-          mobile: res.telNumber,
-          totalDetail: address.setAddressInfo(res)
-        }
-
-        that._bindAddressInfo(addressInfo);
-
-        //保存地址
-        address.submitAddress(res, (flag) => {
-          if (!flag) {
-            that.showTips('操作提示', '地址信息更新失败！');
-          }
-        });
-      }
-    })
-  },
-
   /*
     * 提示窗口
     * params:

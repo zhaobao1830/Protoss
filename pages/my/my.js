@@ -127,5 +127,28 @@ Page({
         that.showTips('支付失败', '商品已下架或库存不足');
       }
     })
+  },
+
+  editAddress: function (event) {
+    var that = this;
+    wx.chooseAddress({
+      success: function (res) {
+        console.log(res);
+        var addressInfo = {
+          name: res.userName,
+          mobile: res.telNumber,
+          totalDetail: address.setAddressInfo(res)
+        }
+
+        that._bindAddressInfo(addressInfo);
+
+        //保存地址
+        address.submitAddress(res, (flag) => {
+          if (!flag) {
+            that.showTips('操作提示', '地址信息更新失败！');
+          }
+        });
+      }
+    })
   }
 })
