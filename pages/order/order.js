@@ -101,6 +101,27 @@ Page({
     });
   },
 
+  /*修改或者添加地址信息*/
+  editAddress:function(){
+    var that=this;
+    wx.chooseAddress({
+      success: function (res) {
+        var addressInfo = {
+          name:res.userName,
+          mobile:res.telNumber,
+          totalDetail:address.setAddressInfo(res)
+        };
+        that._bindAddressInfo(addressInfo);
+
+        //保存地址
+        address.submitAddress(res,(flag)=>{
+          if(!flag) {
+            that.showTips('操作提示','地址信息更新失败！');
+          }
+        });
+      }
+    })
+  },
 
   /*绑定地址信息*/
   _bindAddressInfo: function (addressInfo) {
