@@ -150,5 +150,12 @@ Page({
         });
       }
     })
+  },
+
+  /*绑定地址信息*/
+  _bindAddressInfo: function (addressInfo) {
+    this.setData({
+      addressInfo: addressInfo
+    });
   }
 })
